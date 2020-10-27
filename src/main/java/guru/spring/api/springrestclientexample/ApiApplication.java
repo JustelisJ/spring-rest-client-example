@@ -1,4 +1,4 @@
-package guru.spring.api;
+package guru.spring.api.springrestclientexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Who's that pokemon</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<!--/*@thymesVar id="pokemon" type="guru.spring.api.domain.Pokemon"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">Pokemon from API</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Name</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>Is it default</th>
+                                <th>Encounter area</th>
+                                <th>Types</th>
+                            </tr>
+                            </thead>
+                            <tr th:remove="all">
+                                <td>Joe</td>
+                                <td>Buck</td>
+                                <td>Male</td>
+                                <td>foo@example.com</td>
+                                <td>English</td>
+                                <td>132-123-1234</td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td>Joe</td>
+                                <td>Buck</td>
+                                <td>Male</td>
+                                <td>foo@example.com</td>
+                                <td>English</td>
+                                <td>132-123-1234</td>
+                            </tr>
+                            <!--/*@thymesVar id="pokemon" type="guru.spring.api.domain.Pokemon"*/-->
+                            <tr>
+                                <td th:text="${pokemon.name}">Joe</td>
+                                <td th:text="${pokemon.height}">Buck</td>
+                                <td th:text="${pokemon.weight}">Male</td>
+                                <td th:text="${pokemon.is_default}">foo@example.com</td>
+                                <td th:text="${pokemon.location_area_encounters}">English</td>
+                                <tr th:each="type : ${pokemon.types}">
+                                    <!--/*@thymesVar id="type" type="guru.spring.api.domain.TypeData"*/-->
+                                    <td th:text="${type.getType().name}">type1</td>
+                                    <td th:remove="all">type 2</td>
+                                </tr>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
